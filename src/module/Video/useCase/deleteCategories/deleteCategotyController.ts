@@ -22,6 +22,39 @@ class DeleteCategoryController {
 
     return response.status(204).end()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 

@@ -5,7 +5,7 @@ import { categoriesRouter, categoriesRouterDel } from "./categories.routes";
 const router = Router()
 
 router.use("/categories", categoriesRouter);
-router.use("/categories/:id", categoriesRouterDel )
+router.use("/categories", categoriesRouterDel )
 
 
 export { router }

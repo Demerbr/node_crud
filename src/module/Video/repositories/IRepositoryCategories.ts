@@ -9,6 +9,14 @@ interface ICategoryCreateDTO{
 }
 
 
+interface ICategoryUpdatedDTO{
+    id: string
+    name: string;
+    description: string;
+}
+
+
+
 
 interface IRepositoryCategory {
 
@@ -22,9 +30,11 @@ interface IRepositoryCategory {
 
     deleteCategory(id: string): Promise<DeleteResult>
 
+    updateCategory({id, name, description}: ICategoryUpdatedDTO): Promise<Category | Error>
+
 
 
 
 }
 
-export {IRepositoryCategory, ICategoryCreateDTO}
+export {IRepositoryCategory, ICategoryCreateDTO, ICategoryUpdatedDTO}

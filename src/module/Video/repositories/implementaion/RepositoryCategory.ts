@@ -1,6 +1,6 @@
 import { DeleteResult, getRepository, Repository } from "typeorm";
 import { Category } from "../../entities/Categories";
-import { ICategoryCreateDTO, IRepositoryCategory } from "../IRepositoryCategories";
+import { ICategoryCreateDTO, ICategoryUpdatedDTO, IRepositoryCategory } from "../IRepositoryCategories";
 
 
 
@@ -56,6 +56,22 @@ class repositoryCategory implements IRepositoryCategory {
         const deletCat = await this.repository.delete(id);
 
         return deletCat
+
+    }
+
+    async updateCategory({ id, name, description }: ICategoryUpdatedDTO): Promise<Category | Error> {
+    
+        const category = await this.repository.findOne({id})
+
+    
+        
+
+        category.name = name ? name : category.name
+        category.description = description ? description : category.description;
+
+        await this.repository.save(category)
+
+        return category
 
     }
 
