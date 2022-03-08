@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { CreateCategoryController } from "../useCase/createCategories/createCategoryController";
-import { DeleteCategoryController } from "../useCase/deleteCategories/deleteCategotyController";
-import { GetAllCategoryController } from "../useCase/getAllCategories/getAllCategoriesController";
-import { UpdateCategoryController } from "../useCase/updateCategories/updateCategoryController";
+import { CreateCategoryController } from "../useCase/Category/createCategories/createCategoryController";
+import { DeleteCategoryController } from "../useCase/Category/deleteCategories/deleteCategotyController";
+import { GetAllCategoryController } from "../useCase/Category/getAllCategories/getAllCategoriesController";
+import { UpdateCategoryController } from "../useCase/Category/updateCategories/updateCategoryController";
 
 
 

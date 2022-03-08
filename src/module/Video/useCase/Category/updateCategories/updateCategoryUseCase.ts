@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { Category } from "../../entities/Categories";
-import { IRepositoryCategory } from "../../repositories/IRepositoryCategories";
+import { Category } from "../../../entities/Categories";
+import { IRepositoryCategory } from "../../../repositories/IRepositoryCategories";
 
 interface CategoryUpdateRequest {
     id: string;
@@ -30,11 +30,15 @@ class UpdateCategoryUsecase {
         
         
 
+
+
+        
+
         const result = await this.repositoryCategory.updateCategory({id, name, description})
 
     
 
-       return result
+       return result 
 
         
 
