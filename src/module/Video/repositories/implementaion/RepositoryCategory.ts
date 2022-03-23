@@ -39,7 +39,7 @@ class repositoryCategory implements IRepositoryCategory {
         
     }
 
-    async findCategory(name: string): Promise<Category> {
+    async findCategoryByName(name: string): Promise<Category> {
         const findByName = await this.repository.findOne({name})
 
         return findByName

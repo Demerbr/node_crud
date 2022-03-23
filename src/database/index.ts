@@ -59,15 +59,15 @@ getConnectionOptions().then(options => {
 //                     }
 
 //                 ],
-//                 foreignKeys:[
-//                     {
-//                         name: "fk_videos_category",
-//                         columnNames: ["category_id"],
-//                         referencedTableName: "categories",
-//                         referencedColumnNames: ["id"]
+                // foreignKeys:[
+                //     {
+                //         name: "fk_videos_category",
+                //         columnNames: ["category_id"],
+                //         referencedTableName: "categories",
+                //         referencedColumnNames: ["id"]
 
-//                     }
-//                 ]
+                //     }
+                // ]
 //             })
 //         )
 //     }

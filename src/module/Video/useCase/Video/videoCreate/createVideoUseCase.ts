@@ -25,11 +25,20 @@ class CreateVideoUseCase {
 
     async execute({name, description, duration, category_id }: IVideosRequest): Promise<Video | Error>{
 
-        // const ifIExistCategory = await this.repositoryVideo.findCategory_id(category_id)
+        const ifIExistCategory = await this.repositoryVideo.findCategory_id(category_id)
 
-        // if(! ifIExistCategory){
-        //     return new Error("Category does not exists")
-        // }
+        if(! ifIExistCategory){
+            return  new Error("Category does not exists");
+            
+        }
+        
+
+        const ifExistsVideo = await this.repositoryVideo.findVideoByName(name)
+
+        if(ifExistsVideo){
+
+            return new Error("Video already exists")
+        }
 
 
         const video =  this.repositoryVideo.craete({

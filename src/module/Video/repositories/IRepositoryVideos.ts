@@ -10,6 +10,16 @@ interface ICreateVideosDTO{
     category_id: string;
 }
 
+interface IUpdateVideoDTO{
+
+    id: string;
+    name: string;
+    description: string
+    duration: number
+    category_id:string
+
+}
+
 
 
 
@@ -22,11 +32,20 @@ interface IRepositoryVideo {
 
     findCategory_id(id: string): Promise<Category>
 
+    findVideoByName(name: string): Promise<Video>
+
+
     findVideoById(id: string): Promise<Video>
+
+    deleteVideo(id: string): Promise<void>
+
+    updateVideo({id, name, description, duration, category_id}: IUpdateVideoDTO): Promise<Video | Error>
+
+
 
 
 
 }
 
 
-export { IRepositoryVideo, ICreateVideosDTO}
+export { IRepositoryVideo, ICreateVideosDTO, IUpdateVideoDTO}

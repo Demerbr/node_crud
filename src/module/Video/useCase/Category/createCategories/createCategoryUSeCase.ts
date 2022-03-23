@@ -19,7 +19,7 @@ class CreateCategoryUseCase {
 
     async execute({name, description}: IRequest): Promise<void | Error> {
 
-        const findCategory = await this.repositoryCategory.findCategory(name);
+        const findCategory = await this.repositoryCategory.findCategoryByName(name);
 
         if( findCategory){
             

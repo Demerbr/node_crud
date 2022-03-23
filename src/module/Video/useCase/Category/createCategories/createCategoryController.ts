@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { Repository } from "typeorm";
-import { Category } from "../../entities/Categories";
 import { CreateCategoryUseCase } from "./createCategoryUSeCase";
 
 

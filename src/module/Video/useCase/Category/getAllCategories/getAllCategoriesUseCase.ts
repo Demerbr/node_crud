@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { Category } from "../../entities/Categories";
-import { IRepositoryCategory } from "../../repositories/IRepositoryCategories";
+import { Category } from "../../../entities/Categories";
+import { IRepositoryCategory } from "../../../repositories/IRepositoryCategories";
 
 
 

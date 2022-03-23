@@ -13,15 +13,21 @@ class CreateVideoController {
     async handle ( request: Request, response: Response){
         const {name, description, duration, category_id  } = request.body
 
+
+      
+
+
         const createVideoUseCase = container.resolve(CreateVideoUseCase)
 
-        const result = createVideoUseCase.execute({name, description, duration, category_id})
+        const result = await createVideoUseCase.execute({name, description, duration, category_id})
 
-        if( result instanceof Error ){
-          return  response.status(400).json(result.message)
+
+        if(result instanceof Error ){
+
+          return response.status(400).json(result.message)
         }
 
-        return response.status(201).end()
+        return response.status(201).send()
 
     }
 

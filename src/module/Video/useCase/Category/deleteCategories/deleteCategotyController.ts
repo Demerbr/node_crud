@@ -14,11 +14,11 @@ class DeleteCategoryController {
     const { id } = request.params
     const deleteCategoryUseCase = container.resolve(DeleteCategoryUseCase)
 
-    await deleteCategoryUseCase.execute({id})
+    const result = await deleteCategoryUseCase.execute({id})
 
-    // if(result instanceof Error){
-    //     return response.status(400).json(result.message)
-    // }
+    if(result instanceof Error){
+        return response.status(400).json(result.message)
+    }
 
     return response.status(204).end()
 

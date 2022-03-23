@@ -25,7 +25,7 @@ interface IRepositoryCategory {
 
     list(): Promise<Category[]>
 
-    findCategory(name: string): Promise<Category>
+    findCategoryByName(name: string): Promise<Category>
     findCategoryById(id: string): Promise<Category>
 
     deleteCategory(id: string): Promise<DeleteResult>
