@@ -30,7 +30,7 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
        const user = usersRepository.findById(user_id)
 
        if(!user){
-           throw new Error("User does not exists!");
+           throw new Error("User does not exists! ");
            
        }
 
