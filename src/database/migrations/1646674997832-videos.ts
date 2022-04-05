@@ -43,7 +43,10 @@ export class videos1646674997832 implements MigrationInterface {
                         name: "fk_videos_category",
                         columnNames: ["category_id"],
                         referencedTableName: "categories",
-                        referencedColumnNames: ["id"]
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE",
+                        onUpdate: "CASCADE"
+                        
 
                     }
                 ]

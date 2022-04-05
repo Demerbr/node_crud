@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe"
+import { AppError } from "../../../../../errors/AppError"
 import { IRepositoryCategory } from "../../../repositories/IRepositoryCategories"
 
 interface IRequest{
@@ -22,7 +23,7 @@ class DeleteCategoryUseCase {
         const findCategory = await this.repositoryCategory.findCategoryById(id)
 
         if(! findCategory){
-            return new Error("Category does not existis")
+            return new AppError("Category does not existis")
         }
 
       return  await this.repositoryCategory.deleteCategory(id)

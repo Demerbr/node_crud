@@ -1,0 +1,316 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": " CadVid Documentation",
+        "description": "This is an API",
+        "version": "1.0.0",
+        "contact":{
+            "email":"demerson.b@hotmail.com"
+        }
+    },
+    "paths": {
+        "/users":{
+            "post":{
+                "tags": ["User"],
+                "summary": "create a user",
+                "description": "Create a new user",
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties":{
+                                    "name":{
+                                    "type": "string"
+                                    },
+                                    "email":{
+                                        "type": "string"
+                                    },
+                                    "password":{
+                                        "type":"string"
+                                    }
+                                },
+                                "example":{
+                                    "name": "User name sample",
+                                    "email": "User e-mail sample",
+                                    "password":"User password sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201":{
+                        "description": "Created",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                    "$ref": "#/components/schemas/User"
+                                    
+                                    
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description": "User already exists!"
+                    }
+                }
+            }
+        },
+        "/sessions":{
+            "post":{
+                "tags":["session"],
+                "summary": "Login user",
+                "description": "Login user",
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties":{
+                                    "email":{
+                                        "type": "string"
+                                    },
+                                    "password":{
+                                        "type":"string"
+                                    }
+                                },
+                                "example":{
+                                    "email": "User e-mail sample",
+                                    "password":"User password sample"
+                                }
+                            }
+                        }
+
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description": "Ok"
+                    }
+                }
+            }
+        },
+        
+        "/categories":{
+            "post":{
+                "tags": ["Category"],
+                "summary": "create a category",
+                "description": "Create a new category",
+                "security":[{"bearerAuth": []}],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties":{
+                                    "name":{
+                                    "type": "string"
+                                    },
+                                    "description":{
+                                        "type": "string"
+                                    }
+                                },
+                                "example":{
+                                    "name": "Category name sample",
+                                    "description": "Cadegoty description sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201":{
+                        "description": "Created"
+                    },
+                    "500":{
+                        "description": "Category already exists!"
+                    }
+                }
+        
+            },
+            "get":{
+                "tags": ["Category"],
+                "summary": "List all categories",
+                "description": "List all categories",
+                "security":[{"bearerAuth": []}],
+    
+                "responses": {
+                    "200":{
+                        "description": "Success",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                "type": "array",
+                                "items":{
+                                    "type": "object",
+                                    "properties":{
+                                    "name":{
+                                        "type": "string"
+                                    },
+                                    "description":{
+                                        "type": "string"
+                                    }
+                                    }
+                                }
+                                }
+                            }
+                            }
+                    }
+                    
+                }
+            }
+        },
+        
+        "/categories/{id}":{
+            "put":{
+                "tags": ["Category"],
+                "summary": "Updated a category",
+                "parameters":[
+                   {
+                    "name": "id",
+                    "in":"path",
+                    "required": true,
+                    "description":" String id of the category"
+               }
+                ],
+                "description": "Updated a new category",
+                "security":[{"bearerAuth": []}],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties":{
+                                    "name":{
+                                    "type": "string"
+                                    },
+                                    "description":{
+                                        "type": "string"
+                                    }
+                                },
+                                "example":{
+                                    "name": "Category name sample",
+                                    "description": "Cadegoty description sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201":{
+                        "description": "Created"
+                    },
+                    "500":{
+                        "description": "Category already exists!"
+                    }
+                }
+            },
+            "delete":{
+                "tags": ["Category"],
+                "summary": "Deleted a category",
+                "parameters":[
+                   {
+                    "name": "id",
+                    "in":"path",
+                    "required": true,
+                    "description":" String id of the category"
+               }
+                ],
+                "description": "Updated a new category",
+                "security":[{"bearerAuth": []}],
+                "responses": {
+                    "201":{
+                        "description": "Created"
+                    },
+                    "500":{
+                        "description": "Category already exists!"
+                    }
+                }
+            }
+
+        },
+        "/videos":{
+            "post":{
+                "tags": ["Video"],
+                "summary": "create a Video",
+                "description": "Create a new video",
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties":{
+                                    "name":{
+                                    "type": "string"
+                                    },
+                                    "description":{
+                                        "type": "string"
+                                    },
+                                    "duration":{
+                                        "type":"number"
+                                    },
+                                    "categori_id":{
+                                        "type":"number"
+                                    }
+                                },
+                                "example":{
+                                    "name": "Video name sample",
+                                    "description": "Video description sample",
+                                    "duration":100,
+                                    "category_id": "Id of a category"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200":{
+                        "description": "Ok"
+                    },
+                    "500":{
+                        "description": "Video already exists!"
+                    }
+                }
+            }
+            
+        
+            
+        
+
+        }
+        
+    },
+    "components":{
+        "schemas":{
+            "User":{
+                "type": "object",
+            "properties":{
+                "id":{
+                    "type": "string"
+                },
+                "name":{
+                    "type": "string"
+                },
+                "email":{
+                    "type": "string"
+                },
+                "password":{
+                    "type": "string"
+                }
+
+            }
+            }
+        },
+        "securitySchemes":{
+            "bearerAuth":{
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+
+}

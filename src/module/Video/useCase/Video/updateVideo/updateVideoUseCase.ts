@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../../errors/AppError";
 import { IRepositoryVideo } from "../../../repositories/IRepositoryVideos";
 
 
@@ -27,7 +28,7 @@ class UpdateVideoUseCase{
         const findId = await this.repositoryVideo.findVideoById(id)
 
         if(! findId){
-            return new Error("Video does not exists")
+            return new AppError("Video does not exists")
         }
 
         const result = await this.repositoryVideo.updateVideo({id, name, description, duration, category_id}) 

@@ -11,7 +11,7 @@ router.use("/categories", categoriesRouter);
 router.use("/categories", categoriesRouterDel )
 
 router.use("/videos", videosRouter)
-router.use("/user", usersRouter)
+router.use("/users", usersRouter)
 router.use(authenticaterouter)
 
 

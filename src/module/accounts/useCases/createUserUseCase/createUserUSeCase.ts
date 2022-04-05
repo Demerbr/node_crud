@@ -1,6 +1,8 @@
 import { inject, injectable } from "tsyringe";
 import { IUsersRepository } from "../../repositories/IUserRepository";
 import { hash } from "bcrypt"
+import { User } from "../../entities/Users";
+import { AppError } from "../../../../errors/AppError";
 
 interface IRequest{
     name: string,
@@ -16,17 +18,19 @@ class CreateUSerUSeCase {
         private userRespository: IUsersRepository
     ){}
 
-    async execute({name, email, password}: IRequest): Promise<void>{
+    async execute({name, email, password}: IRequest): Promise<User>{
 
         const ifEmailExists = await this.userRespository.findByEmail(email)
 
         if( ifEmailExists ){
-            throw new Error("User alredy exists");
+            throw new AppError("User alredy exists", 404);
         }
 
         const passwordHash = await hash(password, 8)
 
-        await this.userRespository.create({name, email, password: passwordHash})
+       const user =  await this.userRespository.create({name, email, password: passwordHash})
+
+       return user
     }
 }
 

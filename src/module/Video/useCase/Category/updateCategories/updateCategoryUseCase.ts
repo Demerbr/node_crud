@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../../errors/AppError";
 import { Category } from "../../../entities/Categories";
 import { IRepositoryCategory } from "../../../repositories/IRepositoryCategories";
 
@@ -18,13 +19,13 @@ class UpdateCategoryUsecase {
         private repositoryCategory: IRepositoryCategory
     ){}
 
-    async execute({id, name, description}: CategoryUpdateRequest): Promise<Category | Error>{
+    async execute({id, name, description}: CategoryUpdateRequest): Promise<Category | AppError | Error >{
 
 
         const category = await this.repositoryCategory.findCategoryById(id)
 
         if(! category){
-            return new Error("Category does not Exists")
+            return new AppError("Category does not Exists")
         }
 
         
@@ -38,7 +39,7 @@ class UpdateCategoryUsecase {
 
     
 
-       return result 
+        return result 
 
         
 

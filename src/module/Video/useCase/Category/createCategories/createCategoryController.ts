@@ -22,7 +22,7 @@ class CreateCategoryController {
             return response.status(400).json(result.message)
         }
 
-        return response.status(201).send();
+        return response.status(201).json(result);
 
 
 

@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../../errors/AppError";
 import { IRepositoryVideo } from "../../../repositories/IRepositoryVideos";
 
 interface IRequestVideo{
@@ -18,13 +19,13 @@ class DeleteVideoUseCase {
         private repositoryVideo: IRepositoryVideo
     ){}
 
-    async execute({id}: IRequestVideo): Promise <void | Error> {
+    async execute({id}: IRequestVideo): Promise <void | Error | AppError> {
 
         const findId = await this.repositoryVideo.findVideoById(id)
 
 
         if(! findId){
-            return new Error("Video id does not exists")
+            return new AppError("Video id does not exists", 404)
         }
 
         return await this.repositoryVideo.deleteVideo(id)
