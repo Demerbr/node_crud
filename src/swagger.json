@@ -241,6 +241,7 @@
                 "tags": ["Video"],
                 "summary": "create a Video",
                 "description": "Create a new video",
+                "security":[{"bearerAuth": []}],
                 "requestBody":{
                     "content":{
                         "application/json":{
@@ -376,8 +377,8 @@
                     }
                 },
                 "responses": {
-                    "201":{
-                        "description": "Created"
+                    "204":{
+                        "description": "Ok"
                     },
                     "404":{
                         "description": "Video does not exists!"
@@ -398,7 +399,7 @@
                 "description": "Deleted a video",
                 "security":[{"bearerAuth": []}],
                 "responses": {
-                    "200":{
+                    "204":{
                         "description": "ok"
                     },
                     "400":{
