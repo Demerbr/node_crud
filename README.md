@@ -35,6 +35,21 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
     # Instalar as dependências
     $ yarn install
 
-    # Iniciar o projeto
-    $ yarn start
+   
 ```
+## 🗂 Como executar o projeto
+
+```bash
+
+    # Buildar containers
+    $  docker-compose up --build -d
+
+    # Iniciar os containers 
+    $ docker-compose up
+
+    # Instalar migrations no banco de dados
+    $ yarn typeorm migration:run
+   
+```
+
+<a href="http://localhost:5555/api-docs"> Acessar documentação swagger</a>
