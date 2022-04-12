@@ -27,10 +27,10 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
 ```bash
 
     # Clonar o repositório
-    $ git clone https://github.com/danileao/rocketmusic
+    $ git clone https://github.com/Demerbr/node_crud.git
 
     # Entrar no diretório
-    $ cd rocketmusic
+    $ cd node_crud
 
     # Instalar as dependências
     $ yarn install
