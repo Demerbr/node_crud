@@ -1,5 +1,6 @@
 import "reflect-metadata"
 import express, { NextFunction, Request, Response } from "express";
+import bodyParser from "body-parser";
 import "express-async-errors"
 import swaggerUi from "swagger-ui-express"
 import "./database"
@@ -13,9 +14,14 @@ const app = express()
 
 app.use(express.json())
 
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use(bodyParser.json())
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 app.use(router);
+
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction)=> {
     if(err instanceof AppError){
