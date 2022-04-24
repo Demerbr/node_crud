@@ -44,9 +44,6 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
     # Buildar containers
     $  docker-compose up --build -d
 
-    # Iniciar os containers 
-    $ docker-compose up
-
     # Instalar migrations no banco de dados
     $ yarn typeorm migration:run
    
