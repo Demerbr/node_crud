@@ -5,6 +5,7 @@ import { Video } from "../entities/Videos";
 
 interface ICreateVideosDTO{
     name: string;
+    url: string;
     description: string;
     duration: number;
     category_id: string;
@@ -13,6 +14,7 @@ interface ICreateVideosDTO{
 interface IUpdateVideoDTO{
 
     id: string;
+    url: string;
     name: string;
     description: string
     duration: number

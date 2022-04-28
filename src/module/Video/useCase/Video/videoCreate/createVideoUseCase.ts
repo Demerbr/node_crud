@@ -5,6 +5,7 @@ import { IRepositoryVideo } from "../../../repositories/IRepositoryVideos";
 
 interface IVideosRequest {
     name: string;
+    url: string;
     description: string;
     duration: number;
     category_id: string;
@@ -23,7 +24,7 @@ class CreateVideoUseCase {
     
 
 
-    async execute({name, description, duration, category_id }: IVideosRequest): Promise<Video | Error>{
+    async execute({name, url, description, duration, category_id }: IVideosRequest): Promise<Video | Error>{
 
         const ifIExistCategory = await this.repositoryVideo.findCategory_id(category_id)
 
@@ -43,6 +44,7 @@ class CreateVideoUseCase {
 
         const video =  this.repositoryVideo.craete({
             name,
+            url,
             description,
             duration,
             category_id

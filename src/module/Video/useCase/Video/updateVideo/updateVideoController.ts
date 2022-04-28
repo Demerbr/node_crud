@@ -12,11 +12,11 @@ class UpdateVideoController {
 
     async handle(request: Request, response: Response){
         const { id } = request.params
-        const { name, description, duration, category_id} = request.body
+        const { name, url,  description, duration, category_id} = request.body
 
         const updateVideoUseCase = container.resolve(UpdateVideoUseCase)
 
-        const result = await updateVideoUseCase.execute({id, name, description, duration, category_id})
+        const result = await updateVideoUseCase.execute({id, url, name, description, duration, category_id})
 
         if(result instanceof Error){
             return response.status(400).json(result.message)

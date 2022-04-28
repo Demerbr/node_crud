@@ -22,9 +22,10 @@ class RepositoryVideo implements IRepositoryVideo{
     }
    
 
-   async craete({ name, description, duration, category_id }: ICreateVideosDTO): Promise<Video> {
+   async craete({ name, url, description, duration, category_id }: ICreateVideosDTO): Promise<Video> {
         const  createVideo = this.repository.create({
             name,
+            url,
             description,
             duration,
             category_id
@@ -71,7 +72,7 @@ class RepositoryVideo implements IRepositoryVideo{
         const delVideo = await this.repository.delete({id})
     }
 
-    async updateVideo({ id, name, description, duration, category_id }: IUpdateVideoDTO): Promise<Video | Error> {
+    async updateVideo({ id, url, name, description, duration, category_id }: IUpdateVideoDTO): Promise<Video | Error> {
 
         const video = await this.repository.findOne({id})
 
@@ -79,6 +80,7 @@ class RepositoryVideo implements IRepositoryVideo{
         
 
         video.name = name ? name : video.name
+        video.url = url ? url: video.url
         video.description = description ? description : video.description;
         video.duration = duration ? duration : video.duration
         video.category_id = category_id ? category_id : video.category_id

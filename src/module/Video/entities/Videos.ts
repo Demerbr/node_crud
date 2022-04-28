@@ -10,6 +10,9 @@ class Video {
     id: string;
 
     @Column()
+    url: string
+
+    @Column()
     name: string;
 
     @Column()

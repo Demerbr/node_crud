@@ -11,7 +11,7 @@ import { CreateVideoUseCase } from "./createVideoUseCase";
 class CreateVideoController {
 
     async handle ( request: Request, response: Response){
-        const {name, description, duration, category_id  } = request.body
+        const {name, url, description, duration, category_id  } = request.body
 
 
       
@@ -19,7 +19,7 @@ class CreateVideoController {
 
         const createVideoUseCase = container.resolve(CreateVideoUseCase)
 
-        const result = await createVideoUseCase.execute({name, description, duration, category_id})
+        const result = await createVideoUseCase.execute({name, url, description, duration, category_id})
 
 
         if(result instanceof Error ){

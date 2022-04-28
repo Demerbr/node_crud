@@ -5,6 +5,7 @@ import { IRepositoryVideo } from "../../../repositories/IRepositoryVideos";
 
 interface IRequestUpdateVideo{
     id: string;
+    url: string
     name: string;
     description: string
     duration: number
@@ -23,7 +24,7 @@ class UpdateVideoUseCase{
         private repositoryVideo: IRepositoryVideo
     ){}
 
-    async execute({id, name, description, duration, category_id}: IRequestUpdateVideo){
+    async execute({id, url, name, description, duration, category_id}: IRequestUpdateVideo){
 
         const findId = await this.repositoryVideo.findVideoById(id)
 
@@ -31,7 +32,7 @@ class UpdateVideoUseCase{
             throw new AppError("Video does not exists", 400)
         }
 
-        const result = await this.repositoryVideo.updateVideo({id, name, description, duration, category_id}) 
+        const result = await this.repositoryVideo.updateVideo({id, url, name, description, duration, category_id}) 
         
         return result
 
