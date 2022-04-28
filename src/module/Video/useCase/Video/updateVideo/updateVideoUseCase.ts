@@ -28,7 +28,7 @@ class UpdateVideoUseCase{
         const findId = await this.repositoryVideo.findVideoById(id)
 
         if(! findId){
-            return new AppError("Video does not exists")
+            throw new AppError("Video does not exists", 400)
         }
 
         const result = await this.repositoryVideo.updateVideo({id, name, description, duration, category_id}) 

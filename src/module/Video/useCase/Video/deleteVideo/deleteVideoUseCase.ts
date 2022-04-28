@@ -25,7 +25,7 @@ class DeleteVideoUseCase {
 
 
         if(! findId){
-            return new AppError("Video id does not exists", 404)
+            throw new AppError("Video id does not exists", 404)
         }
 
         return await this.repositoryVideo.deleteVideo(id)

@@ -31,9 +31,9 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction)=>
     }
 
     return response.status(500).json({
-        status: "errer",
+        status: "error",
         message: `Internal server error - ${err.message}`
     })
 })
 
-app.listen(5555,()=> console.log("Server on port 5555"))
+app.listen(5555,()=> console.log("Server is running on port 5555"))

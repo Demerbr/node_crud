@@ -28,7 +28,7 @@ class CreateVideoUseCase {
         const ifIExistCategory = await this.repositoryVideo.findCategory_id(category_id)
 
         if(! ifIExistCategory){
-            return  new Error("Category does not exists");
+            throw  new Error("Category does not exists");
             
         }
         

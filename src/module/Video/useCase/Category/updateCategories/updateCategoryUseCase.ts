@@ -25,19 +25,10 @@ class UpdateCategoryUsecase {
         const category = await this.repositoryCategory.findCategoryById(id)
 
         if(! category){
-            return new AppError("Category does not Exists")
+            throw new AppError("Category does not Exists")
         }
 
-        
-        
-
-
-
-        
-
         const result = await this.repositoryCategory.updateCategory({id, name, description})
-
-    
 
         return result 
 

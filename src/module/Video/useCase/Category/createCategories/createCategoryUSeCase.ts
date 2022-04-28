@@ -24,7 +24,7 @@ class CreateCategoryUseCase {
 
         if( findCategory){
             
-           return new AppError("Category Already Exist");
+           throw new AppError("Category Already Exist");
             
         }
 
