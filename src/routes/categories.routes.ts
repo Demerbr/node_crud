@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { ensureAdmin } from "../middlewares/ensureAdmin";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import { CreateCategoryController } from "../module/Video/useCase/Category/createCategories/createCategoryController";
 import { DeleteCategoryController } from "../module/Video/useCase/Category/deleteCategories/deleteCategotyController";
@@ -18,7 +19,7 @@ const updateCategoryController = new UpdateCategoryController()
 
 categoriesRouter.use(ensureAuthenticated)
 
-categoriesRouter.post("/", createCategoryController.handle)
+categoriesRouter.post("/", ensureAdmin, createCategoryController.handle)
 
 categoriesRouter.get("/", getAllCategoryController.handle)
 

@@ -8,6 +8,7 @@ interface IRequest{
     name: string,
     email: string,
     password: string,
+    isAdmin: boolean,
 }
 
 @injectable()
@@ -18,7 +19,7 @@ class CreateUSerUSeCase {
         private userRespository: IUsersRepository
     ){}
 
-    async execute({name, email, password}: IRequest): Promise<User>{
+    async execute({name, email, password, isAdmin}: IRequest): Promise<User>{
 
         const ifEmailExists = await this.userRespository.findByEmail(email)
 
@@ -28,7 +29,7 @@ class CreateUSerUSeCase {
 
         const passwordHash = await hash(password, 8)
 
-       const user =  await this.userRespository.create({name, email, password: passwordHash})
+       const user =  await this.userRespository.create({name, email, password: passwordHash, isAdmin})
 
        return user
     }

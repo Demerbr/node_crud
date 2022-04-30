@@ -4,14 +4,14 @@ import { AppError } from "../errors/AppError";
 import { UserRepository } from "../module/accounts/repositories/implementation/UsersRepository";
 
 
-interface Ipayload{
+interface IPayload{
     sub: string
 }
 
 
 
 
-export function ensureAuthenticated(request: Request, response: Response, next: NextFunction){
+export async function ensureAuthenticated(request: Request, response: Response, next: NextFunction){
 
     const authHeader = request.headers.authorization;
 
@@ -24,21 +24,13 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
 
     try{
 
-       const {sub: user_id} = verify(token,"jsonwebtoken") as Ipayload
+       const { sub } = verify(token,"jsonwebtoken") as IPayload
 
-       const usersRepository = new UserRepository
-
-       const user = usersRepository.findById(user_id)
-
-       if(!user){
-           throw new AppError("User does not exists! ", 401);
+       request.user_id = sub;
            
-       }
-
-
-
-
        next()
+    
+    
     }catch{
         throw new AppError("Invalid token", 401);
     }    

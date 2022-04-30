@@ -7,6 +7,8 @@ interface ICreateUserDTO{
 
     email: string;
 
+    isAdmin?: boolean;
+
 }
 
 interface IUsersRepository {
