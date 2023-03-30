@@ -6,7 +6,7 @@
 
 ## 🔖&nbsp; Sobre
 
-O projeto **CadVid** é uma API de videos que foi criado a partir video <a href="https://www.youtube.com/watch?v=9AO2hZJsHrs&t=23s"> Node Crud no canal da Rockert Seat</a>
+O projeto **CadVid** é uma API de cadastro de videos que foi criado a partir video <a href="https://www.youtube.com/watch?v=9AO2hZJsHrs&t=23s"> Node Crud no canal da Rockert Seat</a>
  Onde utilizei tal projeto como base e adicionei novas funcionalidades, tecnologias e conceitos SOLID.
 
 ---
